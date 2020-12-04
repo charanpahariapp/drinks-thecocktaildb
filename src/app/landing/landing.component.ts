@@ -46,8 +46,12 @@ export class LandingComponent implements OnInit {
 
   getPage(v: string) {
     this.cocktailService.getCocktailByNameOrFirstLetter(v).subscribe(data => {
-      this.drinks = data.drinks;
-      this.listFilter();
+      if (data.drinks) {
+        this.drinks = data.drinks;
+        this.listFilter();
+      } else {
+        this.drinks = [];
+      }
     });
   }
 
