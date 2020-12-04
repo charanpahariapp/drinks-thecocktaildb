@@ -1,6 +1,6 @@
 # Cocktail
 
-This project created by Vikash Kumar as per requirement given by ZIGRAM
+Project deals with the basic UT implementation of www.thecocktaildb.com/api
 
 ## How to configure
 
