@@ -1,6 +1,6 @@
 # Cocktail
 
-Project deals with the basic UT implementation of www.thecocktaildb.com/api
+Project deals with the basic UI implementation of www.thecocktaildb.com/api
 
 ## How to configure
 
