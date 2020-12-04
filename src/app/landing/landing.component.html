@@ -1,0 +1,147 @@
+<div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;">
+    <div class="Polaris-Page Polaris-Page--fullWidth">
+       <div class="Polaris-Page-Header Polaris-Page-Header--separator">
+          <div class="Polaris-Page-Header__MainContent">
+             <div class="Polaris-Page-Header__TitleActionMenuWrapper">
+                <div class="Polaris-Page-Header__TitleWrapper">
+                   <div>
+                      <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
+                         <div class="Polaris-Header-Title">
+                            <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge"><span class="Polaris-TextStyle--variationStrong">Drinks</span></h1>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="Polaris-Page__Content">
+          <div class="Polaris-Card">
+             <div class="Polaris-Card__Header">
+                <h2 class="Polaris-Heading">Search your drink</h2>
+             </div>
+             <div class="Polaris-Card__Section">
+                <div class="Polaris-Card">
+                   <div class="Polaris-ResourceList__ResourceListWrapper">
+                      <div class="Polaris-ResourceList__FiltersWrapper">
+                         <div class="Polaris-Filters">
+                            
+                            <div class="Polaris-Filters-ConnectedFilterControl__Wrapper">
+                               <div class="Polaris-Filters-ConnectedFilterControl Polaris-Filters-ConnectedFilterControl--right">
+                                  <div class="Polaris-Filters-ConnectedFilterControl__CenterContainer">
+                                     <div class="Polaris-Filters-ConnectedFilterControl__Item">
+                                        <div class="Polaris-Labelled--hidden">
+                                           <div class="Polaris-Connected">
+                                             <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+                                                <mat-form-field class="w-100" appearance="outline">
+                                                   <mat-label>Search drink by first letter or full name</mat-label>
+                                                   <input type="text" matInput placeholder="Type name of the cocktail" [formControl]="searchCocktailControl">
+                                                   <mat-icon matSuffix>search</mat-icon>
+                                                 </mat-form-field>
+                                             </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <div class="Polaris-Filters-ConnectedFilterControl__RightContainer Polaris-Filters-ConnectedFilterControl__RightContainerWithoutMoreFilters"></div>
+                                  <div class="Polaris-Filters-ConnectedFilterControl__MoreFiltersButtonContainer"></div>
+                               </div>
+                            </div>
+
+                            <div class="Polaris-ResourceList__HeaderOuterWrapper">
+                                <div>
+                                    <div>
+                                        <div class="Polaris-ResourceList__HeaderWrapper">
+                                            <div class="Polaris-FormLayout">
+                                                <div role="group" class="Polaris-FormLayout--condensed">
+                                                   <div class="Polaris-FormLayout__Items">
+                                                      
+                                                      <div class="Polaris-FormLayout__Item">
+                                                         <div class="">
+                                                            <div class="Polaris-Connected">
+                                                               <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+                                                                  <mat-form-field appearance="outline">
+                                                                     <mat-label>Filter by Category</mat-label>
+                                                                     <mat-select [formControl]="categoryControl" multiple>
+                                                                        <mat-option *ngFor="let category of categories" [value]="category">
+                                                                           {{ category }}
+                                                                        </mat-option>
+                                                                     </mat-select>
+                                                                  </mat-form-field>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+
+                                                      <div class="Polaris-FormLayout__Item">
+                                                         <div class="">
+                                                            <div class="Polaris-Connected">
+                                                               <div class="Polaris-Connected__Item">
+                                                                  <mat-form-field appearance="outline">
+                                                                     <mat-label>Filter by Ingredients</mat-label>
+                                                                     <mat-select [formControl]="ingredientControl" multiple>
+                                                                        <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">
+                                                                           {{ ingredient }}
+                                                                        </mat-option>
+                                                                     </mat-select>
+                                                                  </mat-form-field>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                      </div>
+                      <ul class="Polaris-ResourceList" aria-live="polite">
+                         <ng-container *ngFor="let drink of drinks">
+                            <li class="Polaris-ResourceItem__ListItem" *ngIf="drink.hasIngredient && drink.hasCategory">
+                               <div class="Polaris-ResourceItem__ItemWrapper">
+                                  <div class="Polaris-ResourceItem">
+                                     <a class="Polaris-ResourceItem__Link" tabindex="0" id="PolarisResourceListItemOverlay7" href="customers/341" data-polaris-unstyled="true"></a>
+                                     <div class="Polaris-ResourceItem__Container">
+                                        <div class="Polaris-ResourceItem__Owned">
+                                           <div class="Polaris-ResourceItem__Media">
+                                             <img src="{{ drink.strDrinkThumb }}" class="drink-image">
+                                           </div>
+                                        </div>
+                                        <div class="Polaris-ResourceItem__Content">
+                                             <h3>
+                                                <span class="Polaris-TextStyle--variationStrong">{{ drink.strDrink }}</span>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span class="Polaris-Badge Polaris-Badge--attention">
+                                                   <span class="Polaris-Badge__Content">
+                                                      {{ drink.strCategory }}
+                                                   </span>
+                                                </span>
+                                             </h3>
+                                           <p>
+                                             <span *ngFor="let i of drink.ingredients" class="Polaris-Badge Polaris-Badge--statusInfo"><span class="Polaris-Badge__Content">{{ i }}</span></span>
+                                           </p>
+                                           <div>{{ drink.strInstructions }}</div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </li>
+                         </ng-container>
+                         <li class="Polaris-ResourceList__ItemWrapper" *ngIf="! drinks.length">
+                           <div class="Polaris-ResourceItem Polaris-ResourceItem--selectable">
+                             <div class="Polaris-ResourceItem__Container">
+                               <h4>No maching drink to show.</h4>
+                             </div>
+                           </div>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
