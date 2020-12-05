@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CocktailService } from './cocktail.service';
+import { MatCardModule } from '@angular/material/card';
 
 const routes: Routes = [{
   path: '',
@@ -22,7 +23,8 @@ const routes: Routes = [{
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [
     CocktailService
